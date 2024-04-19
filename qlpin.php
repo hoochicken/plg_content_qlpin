@@ -100,7 +100,7 @@ class plgContentQlpin extends CMSPlugin
         $pathAlternative = $path . '/' . $layout . '.php';
         if (file_exists($pathAlternative)) return $pathAlternative;
         if (file_exists($pathOverride)) return $pathOverride;
-        return JPATH_BASE . '/plugins/content/' . $this->get('_name') . '/html/default.php';
+        return JPATH_BASE . '/plugins/content/' . $this->_name . '/html/default.php';
     }
 
     /*
