@@ -19,15 +19,16 @@ class plgContentQlpin extends CMSPlugin
 
     private $str_call_start = 'qlpin';
     private $notag = '{noQlpin}';
-    protected $arr_attributes = array('id', 'class', 'style', 'layout',);
+    protected $arr_attributes = ['id', 'class', 'style', 'layout',];
     protected $idDefault = '';
     protected $classDefault = '';
     protected $styleDefault = '';
     protected $layoutDefault = '';
-    protected $states = array();
+    protected $states = [];
 
 
-    function __construct(&$subject, $config) {
+    function __construct(&$subject, $config)
+    {
         $lang = Factory::getApplication()->getLanguage();
         $lang->load('plg_content_qlmodule', dirname(__FILE__));
         parent::__construct($subject, $config);
@@ -109,7 +110,7 @@ class plgContentQlpin extends CMSPlugin
     {
         $selector = implode('|', $this->arr_attributes);
         preg_match_all('~(' . $selector . ')="(.+?)"~s', $string, $matches);
-        $arr_attributes = array();
+        $arr_attributes = [];
         if (is_array($matches)) foreach ($matches[0] as $k => $v) if (isset($matches[1][$k]) and isset($matches[2][$k])) $arr_attributes[$matches[1][$k]] = $matches[2][$k];
         return $arr_attributes;
     }
@@ -149,7 +150,7 @@ class plgContentQlpin extends CMSPlugin
     */
     function getStyles()
     {
-        $styles = array();
+        $styles = [];
         $styles[] = '.qlpin';
         $styles[] = '{';
         $styles[] = 'border:' . $this->params->get('borderWidth') . 'px ' . $this->params->get('borderStyle') . ' ' . $this->params->get('borderColor') . ';';
@@ -190,7 +191,7 @@ class plgContentQlpin extends CMSPlugin
     */
     function setStates()
     {
-        $this->states = array();
+        $this->states = [];
         foreach ($this->arr_attributes as $k => $v) {
             if (isset($this->{$v . 'Default'})) $this->states[$v] = $this->params->get($v, $this->{$v . 'Default'});
             else $this->params->get($v);
