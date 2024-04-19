@@ -1,0 +1,9 @@
+/**
+ * @package     plg_qlpin
+ *
+ * @copyright   Copyright (C) 2024 Mareike Riegel
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+.qlpin {float:right;}
+.qlpin p:last-child{margin:0;}

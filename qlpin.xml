@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="1" group="content" method="upgrade">
+    <name>PLG_CONTENT_QLPIN</name>
+    <author>Mareike Riegel</author>
+    <creationDate>11. June 2024</creationDate>
+    <copyright>Copyright (C) 2024 ql.de All rights reserved.</copyright>
+    <authorEmail>info@ql.de</authorEmail>
+    <authorUrl>http://ql.de/</authorUrl>
+    <version>1.0.0</version>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>PLG_CONTENT_QLPIN_DESCRIPTION</description>
+    <files>
+        <filename plugin="qlpin">qlpin.php</filename>
+        <filename plugin="qlpin">index.html</filename>
+        <filename plugin="qlpin">license.txt</filename>
+        <folder plugin="qlpin">css</folder>
+        <folder plugin="qlpin">html</folder>
+        <folder plugin="qlpin">language</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_qlpin.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_qlpin.sys.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.plg_content_qlpin.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.plg_content_qlpin.sys.ini</language>
+    </languages>
+	<config>
+		<fields name="params">
+            <fieldset name="basic">
+                <field name="category" type="category"
+                       extension="com_content" multiple="true" label="PLG_CONTENT_QLPIN_CATEGORY_LABEL" description="PLG_CONTENT_QLPIN_CATEGORY_DESC" />
+                <field name="option" type="list"
+                       multiple="true"
+                       label="PLG_CONTENT_QLPIN_OPTION_LABEL" description="PLG_CONTENT_QLPIN_OPTION_DESC">
+                    <option value="com_content:article">PLG_CONTENT_QLPIN_OPTION_ARTICLE</option>
+                    <option value="com_content:featured">PLG_CONTENT_QLPIN_OPTION_FEATURED</option>
+                    <option value="com_content:category">PLG_CONTENT_QLPIN_OPTION_CATEGORY</option>
+                    <option value="com_customproperties:search">PLG_CONTENT_QLPIN_OPTION_CPSEARCH</option>
+                </field>
+            </fieldset>
+            <fieldset name="content">
+                <field name="contentHeadline" type="text"
+                       default=""
+                       label="PLG_CONTENT_QLPIN_HEADLINE_LABEL"
+                       description="PLG_CONTENT_QLPIN_HEADLINE_DESC"
+                       size="300"
+                        >
+                </field>
+                <field name="contentText" type="editor"
+                       width="300" height="100" filter="safehtml"
+                       label="PLG_CONTENT_QLPIN_TEXT_LABEL"
+                       description="PLG_CONTENT_QLPIN_TEXT_DESC"
+                        >
+                </field>
+                <field name="contentCode"
+                       filter="raw"
+                       type="textarea" default=""
+                       label="PLG_CONTENT_QLPIN_CODE_LABEL"
+                       description="PLG_CONTENT_QLPIN_CODE_DESC"
+                       cols="80" rows="20"
+                       />
+            </fieldset>
+            <fieldset name="position">
+                <field name="spacerPostion" type="spacer"
+                       label="PLG_CONTENT_QLPIN_SPACERPOSITION_LABEL"
+                       description="PLG_CONTENT_QLPIN_SPACERPOSITION_DESC"
+                        />
+                <field name="withinarticle" type="radio"
+                       class="btn-group"
+                       default="0"
+                       label="PLG_CONTENT_QLPIN_WITHINARTICLE_LABEL"
+                       description="PLG_CONTENT_QLPIN_WITHINARTICLE_DESC"
+                        >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="vertical" type="radio"
+                       class="btn-group"
+                       default="top"
+                       label="PLG_CONTENT_QLPIN_VERTICAL_LABEL"
+                       description="PLG_CONTENT_QLPIN_VERTICAL_DESC"
+                        >
+                    <option value="top">PLG_CONTENT_QLPIN_TOP</option>
+                    <option value="bottom">PLG_CONTENT_QLPIN_BOTTOM</option>
+                </field>
+                <field name="horizontal" type="radio"
+                       class="btn-group"
+                       default="left"
+                       label="PLG_CONTENT_QLPIN_HORIZONTAL_LABEL"
+                       description="PLG_CONTENT_QLPIN_HORIZONTAL_DESC"
+                        >
+                    <option value="left">PLG_CONTENT_QLPIN_LEFT</option>
+                    <option value="right">PLG_CONTENT_QLPIN_RIGHT</option>
+                </field>
+            </fieldset>
+            <fieldset name="styles">
+                <field name="span" type="list"
+                       default="span3"
+                       label="PLG_CONTENT_QLPIN_SPAN_LABEL"
+                       description="PLG_CONTENT_QLPIN_SPAN_DESC">
+                    <option value="span12">span12</option>
+                    <option value="span11">span11</option>
+                    <option value="span10">span10</option>
+                    <option value="span9">span9</option>
+                    <option value="span8">span8</option>
+                    <option value="span7">span7</option>
+                    <option value="span6">span6</option>
+                    <option value="span5">span5</option>
+                    <option value="span4">span4</option>
+                    <option value="span3">span3</option>
+                    <option value="span2">span2</option>
+                    <option value="span1">span1</option>
+                </field>
+                <field name="padding" type="integer"
+                       default="10"
+                       label="PLG_CONTENT_QLPIN_PADDING_LABEL"
+                       description="PLG_CONTENT_QLPIN_PADDING_DESC"
+                       first="0"
+                       last="50"
+                       step="1"
+                       />
+                <field name="background" type="color"
+                       default="#ffffff"
+                       label="PLG_CONTENT_QLPIN_BACKGROUND_LABEL"
+                       description="PLG_CONTENT_QLPIN_BACKGROUND_DESC"
+                        />
+                <field name="color" type="color"
+                       default="#dddddd"
+                       label="PLG_CONTENT_QLPIN_COLOR_LABEL"
+                       description="PLG_CONTENT_QLPIN_COLOR_DESC"
+                        />
+                <field name="spacerBorder" type="spacer"
+                       label="PLG_CONTENT_QLPIN_SPACERBORDER_LABEL"
+                        />
+                <field name="borderWidth" type="integer"
+                       default="0"
+                       first="0"
+                       last="20"
+                       step="1"
+                       label="PLG_CONTENT_QLPIN_WIDTH_LABEL"
+                       description="PLG_CONTENT_QLPIN_WIDTH_DESC"
+                        />
+                <field name="borderStyle" type="list"
+                       default="solid"
+                       label="PLG_CONTENT_QLPIN_STYLE_LABEL"
+                       description="PLG_CONTENT_QLPIN_STYLE_DESC"
+                       >
+                    <option value="solid">PLG_CONTENT_QLPIN_BORDERSTYLE_SOLID</option>
+                    <option value="dotted">PLG_CONTENT_QLPIN_BORDERSTYLE_DOTTED</option>
+                    <option value="dashed">PLG_CONTENT_QLPIN_BORDERSTYLE_DASHED</option>
+                    <option value="double">PLG_CONTENT_QLPIN_BORDERSTYLE_DOUBLE</option>
+                    <option value="ridge">PLG_CONTENT_QLPIN_BORDERSTYLE_RIDGE</option>
+                    <option value="groove">PLG_CONTENT_QLPIN_BORDERSTYLE_GROOVE</option>
+                    <option value="inset">PLG_CONTENT_QLPIN_BORDERSTYLE_INSET</option>
+                    <option value="outset">PLG_CONTENT_QLPIN_BORDERSTYLE_OUTSET</option>
+                </field>
+                <field name="borderColor" type="color"
+                       default="#666666"
+                       label="PLG_CONTENT_QLPIN_COLOR_LABEL"
+                       description="PLG_CONTENT_QLPIN_COLOR_DESC"
+                        />
+                <field name="borderRadius" type="integer"
+                       default="10"
+                       label="PLG_CONTENT_QLPIN_RADIUS_LABEL"
+                       description="PLG_CONTENT_QLPIN_RADIUS_DESC"
+                       first="0"
+                       last="50"
+                       step="1"
+                        />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="text"
+                       default="default"
+                       label="PLG_CONTENT_QLPIN_LAYOUT_LABEL"
+                       description="PLG_CONTENT_QLPIN_LAYOUT_DESC"
+                        />
+            </fieldset>
+		</fields>
+	</config>
+</extension>
